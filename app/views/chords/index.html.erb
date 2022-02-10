@@ -1,0 +1,14 @@
+<p><a href="/chords/new">新規登録</a></p>
+    <table border="1">
+    <tr>
+        <th>コード名</th>
+        <th>例</th>
+    </tr>
+    <% chord_types.each do |chord_type| %>
+        <tr>
+            <td><%= chord_type.name %>コード</td>
+            <td><%= chord.where("(chord_type_id = ?) AND (root_note_id = ?)", chord_type.id, 4).pluck(:constituent_sound) %></td>
+        </tr>
+    <% end %>
+    </table>
+</p>

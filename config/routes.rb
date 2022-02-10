@@ -14,5 +14,16 @@ Rails.application.routes.draw do
   get '/scales/search', to: 'scales#search'
   post '/scales/search', to: 'scales#search'
   
+  get '/chords/index', to: 'chords#index'
+  get '/chords/new', to: 'chords#new'
+
+  get '/chords/confirm', to: 'chords#new'
+  post '/chords/confirm', to: 'chords#confirm'
+
+  get '/chords/create', to: 'chords#index'
+  post '/chords/create', to: 'chords#create'
+
+  get '/chords/search', to: 'chords#search'
+  post '/chords/search', to: 'chords#search'
 
 end
