@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>耳コピ支援ツール</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <h1>耳コピ支援ツール</h1>
+    <ul id="nav">
+      <li><a href="/scales/search">スケールを調べる</a></li>
+      <li><a href="/chords/search">コードを調べる</a></li>
+      <li><a href="/scales/index">スケールを管理する</a></li>
+      <li><a href="/chords/index">コードを管理する</a></li>
+    </ul>
+    <h2><%= @pagename %></h2>
+    <%= yield %>
+    <footer id="footer">
+      <div class="copy">
+          <small>Copyright &copy; Yamashita R. All Rights Reserved.</small>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,14 @@
+<p><a href="/scales/new">新規登録</a></p>
+    <table border="1">
+    <tr>
+        <th>スケール名</th>
+        <th>例</th>
+    </tr>
+    <% scale_types.each do |scale_type| %>
+        <tr>
+            <td><%= scale_type.name %>スケール</td>
+            <td><%= Scale.where("(scale_type_id = ?) AND (root_note_id = ?)", scale_type.id, 4).pluck(:constituent_sound) %></td>
+        </tr>
+    <% end %>
+    </table>
+</p>

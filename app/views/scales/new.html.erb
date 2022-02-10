@@ -1,0 +1,22 @@
+<p>スケールの情報を入力してください</p>
+<%= form_tag("/scales/confirm") do %>
+    <p>スケール名</p>
+    <p><input type="text" name="scale_type">スケール</p>
+    <p>構成音</p>
+    <p>
+        <%= check_box "select_notes", "1" ,{checked: true}%>1(ROOT)
+        <%= check_box "select_notes", "2" %>2
+        <%= check_box "select_notes", "3" %>3
+        <%= check_box "select_notes", "4" %>4
+        <%= check_box "select_notes", "5" %>5
+        <%= check_box "select_notes", "6" %>6
+        <%= check_box "select_notes", "7" %>7
+        <%= check_box "select_notes", "8" %>8
+        <%= check_box "select_notes", "9" %>9
+        <%= check_box "select_notes", "10" %>10
+        <%= check_box "select_notes", "11" %>11
+        <%= check_box "select_notes", "12" %>12
+    </p>
+    <p><input type="submit" value="確認"></p>
+  <% end %>
+</form>
