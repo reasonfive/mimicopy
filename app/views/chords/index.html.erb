@@ -1,14 +1,29 @@
 <p><a href="/chords/new">新規登録</a></p>
-    <table border="1">
+
+<% if chord_types.present?%>
+    <table>
     <tr>
         <th>コード名</th>
         <th>例</th>
+        <th></th>
     </tr>
     <% chord_types.each do |chord_type| %>
         <tr>
-            <td><%= chord_type.name %>コード</td>
-            <td><%= chord.where("(chord_type_id = ?) AND (root_note_id = ?)", chord_type.id, 4).pluck(:constituent_sound) %></td>
+            <td>
+            <%= chord_type.name %>コード
+            </td>
+            <td>
+                <%= Chord.find_by(chord_type_id: chord_type.id, root_note_id: 4).constituent_sound %>
+            </td>
+            <td>
+                <form method="post" action="/chords/delete" onSubmit="return check()">
+                    <input type="hidden" name="delete_chord_type_id" value="<%= chord_type.id %>" >
+                    <input type="submit" value="削除">
+                </form>
+            </td>
         </tr>
     <% end %>
     </table>
-</p>
+<% else %>
+    <p>コードは登録されていません</p>
+<% end %>

@@ -13,7 +13,11 @@ Rails.application.routes.draw do
 
   get '/scales/search', to: 'scales#search'
   post '/scales/search', to: 'scales#search'
-  
+
+  get '/scales/delete', to: 'scales#index'
+  post '/scales/delete', to: 'scales#delete'
+
+
   get '/chords/index', to: 'chords#index'
   get '/chords/new', to: 'chords#new'
 
@@ -25,5 +29,8 @@ Rails.application.routes.draw do
 
   get '/chords/search', to: 'chords#search'
   post '/chords/search', to: 'chords#search'
+
+  get '/chords/delete', to: 'chords#index'
+  post '/chords/delete', to: 'chords#delete'
 
 end

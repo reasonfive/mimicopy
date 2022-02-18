@@ -1,14 +1,28 @@
 <p><a href="/scales/new">新規登録</a></p>
-    <table border="1">
+<% if scale_types.present?%>
+    <table>
     <tr>
         <th>スケール名</th>
         <th>例</th>
+        <th></th>
     </tr>
     <% scale_types.each do |scale_type| %>
         <tr>
-            <td><%= scale_type.name %>スケール</td>
-            <td><%= Scale.where("(scale_type_id = ?) AND (root_note_id = ?)", scale_type.id, 4).pluck(:constituent_sound) %></td>
+            <td>
+                <%= scale_type.name %>スケール
+            </td>
+            <td>
+                <%= Scale.find_by(scale_type_id: scale_type.id, root_note_id: 4).constituent_sound %>
+            </td>
+            <td>
+                <form method="post" action="/scales/delete" onSubmit="return check()">
+                    <input type="hidden" name="delete_scale_type_id" value="<%= scale_type.id %>" >
+                    <input type="submit" value="削除">
+                </form>
+            </td>
         </tr>
     <% end %>
     </table>
-</p>
+<% else %>
+    <p>スケールは登録されていません</p>
+<% end %>
