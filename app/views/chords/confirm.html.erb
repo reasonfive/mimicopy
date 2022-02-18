@@ -1,0 +1,20 @@
+<p>以下の内容でよろしいですか？</p>
+<form method="post" action="/chords/create">
+    <p>コード名</p>
+    <p><input type="text" name="chord_type" value="<%= @chord_type %>" disabled>コード</p>
+    <input type="hidden" name="chord_type" value="<%= @chord_type %>" >
+    <input type="hidden" name="select_notes_ids" value="<%= @select_notes_ids %>" >
+    <% notes.each do |note| %>
+        <input 
+            type="checkbox"
+            name="<%= note.id %>"
+            value="<%= note.id %>"
+            disabled
+            <% if @select_notes_ids.include?(note.id.to_s) %>
+                checked 
+            <% end %>
+        >
+        <%= note.id %>
+    <% end %>
+    <p><input type="submit" value="登録"></p>
+</form>

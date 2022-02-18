@@ -1,0 +1,2 @@
+class ChordType < ApplicationRecord
+end

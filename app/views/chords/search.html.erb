@@ -1,0 +1,24 @@
+<p>コードの情報を入力してください</p>
+<%= form_tag("/chords/search") do %>
+    <p>構成音</p>
+    <p>
+        <%= check_box "select_notes", "1" %>A
+        <%= check_box "select_notes", "2" %>A♯
+        <%= check_box "select_notes", "3" %>B
+        <%= check_box "select_notes", "4" %>C
+        <%= check_box "select_notes", "5" %>C♯
+        <%= check_box "select_notes", "6" %>D
+        <%= check_box "select_notes", "7" %>D♯
+        <%= check_box "select_notes", "8" %>E
+        <%= check_box "select_notes", "9" %>F
+        <%= check_box "select_notes", "10" %>F♯
+        <%= check_box "select_notes", "11" %>G
+        <%= check_box "select_notes", "12" %>G♯
+    </p>
+    <p><input type="submit" value="検索"></p>
+  <% end %>
+</form>
+
+<% @result_msgs.each do |result_msg| %>
+    <p><%=result_msg%></p>
+<% end %>

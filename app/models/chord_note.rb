@@ -1,0 +1,2 @@
+class ChordNote < ApplicationRecord
+end
