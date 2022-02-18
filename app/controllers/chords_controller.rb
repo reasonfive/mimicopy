@@ -1,6 +1,7 @@
 class ChordsController < ApplicationController
     protect_from_forgery
     helper_method :chord_types
+    helper_method :root_c_constituent_sound
     def chord_types
         ChordType.order(:id)
     end
@@ -115,5 +116,16 @@ class ChordsController < ApplicationController
                 end
             end
         end
+    end
+
+    # コードの削除
+    def delete
+        @delete_chord_type_id = params.require(:delete_chord_type_id)
+        @delete_chord_type_name = ChordType.find(@delete_chord_type_id).name
+        ChordType.find(@delete_chord_type_id).destroy!
+
+        @pagename = "#{@delete_chord_type_name}コードを削除しました"
+
+        render action: :index
     end
 end

@@ -19,6 +19,15 @@
   <% end %>
 </form>
 
-<% @result_msgs.each do |result_msg| %>
-    <p><%=result_msg%></p>
+<% if @result_msgs.present? %>
+    <table>
+        <tr>
+            <th>検索結果</th>
+        </tr>
+        <% @result_msgs.each do |result_msg| %>
+            <tr>
+                <td><%=result_msg%></td>
+            </tr>
+        <% end %>
+    </table>
 <% end %>

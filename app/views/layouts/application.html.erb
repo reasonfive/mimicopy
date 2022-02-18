@@ -7,22 +7,49 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script type="text/javascript"> 
+      <!-- 
+
+      function check(){
+        if(window.confirm('削除してよろしいですか？')){
+          return true;
+        }
+        else{ 
+          window.alert('キャンセルされました');
+          return false; 
+        }
+      }
+      // -->
+    </script>
+    <script>
+        $(function () {
+            const hum = $('#hamburger, .close')
+            const nav = $('.sp-nav')
+            hum.on('click', function () {
+                nav.toggleClass('toggle');
+            });
+        });
+    </script>
   </head>
 
   <body>
-    <h1>耳コピ支援ツール</h1>
-    <ul id="nav">
-      <li><a href="/scales/search">スケールを調べる</a></li>
-      <li><a href="/chords/search">コードを調べる</a></li>
-      <li><a href="/scales/index">スケールを管理する</a></li>
-      <li><a href="/chords/index">コードを管理する</a></li>
-    </ul>
-    <h2><%= @pagename %></h2>
-    <%= yield %>
-    <footer id="footer">
-      <div class="copy">
-          <small>Copyright &copy; Yamashita R. All Rights Reserved.</small>
+    <header>
+      <h1><a href="/">耳コピ支援ツール</a></h1>
+      <nav class="pc-nav">
+        <ul>
+          <li><a href="/scales/search">スケールを調べる</a></li>
+          <li><a href="/chords/search">コードを調べる</a></li>
+          <li><a href="/scales/index">スケールを管理する</a></li>
+          <li><a href="/chords/index">コードを管理する</a></li>
+        </ul>
+      </nav>
+    </header>
+    <h2 class="pagename"><%= @pagename %></h2>
+    <div class="container">
+      <div class="contents">
+        <%= yield %>
       </div>
-    </footer>
+    </div>
   </body>
 </html>

@@ -48,7 +48,7 @@ class ScalesController < ApplicationController
         select_notes_ids = params.require(:select_notes_ids).delete('[]"').split(',').map{|n| n.to_i}
         select_notes_ids_minus_one = select_notes_ids.map{|n| n - 1 }
         select_notes_ids_minus_one.shift()
-        # [0, 2, 4, 5, 7, 9, 11]
+
         pp select_notes_ids_minus_one
 
         notes.each do |note|
@@ -115,5 +115,16 @@ class ScalesController < ApplicationController
                 end
             end
         end
+    end
+
+    # スケールの削除
+    def delete
+        @delete_scale_type_id = params.require(:delete_scale_type_id)
+        @delete_scale_type_name = ScaleType.find(@delete_scale_type_id).name
+        ScaleType.find(@delete_scale_type_id).destroy!
+
+        @pagename = "#{@delete_scale_type_name}スケールを削除しました"
+
+        render action: :index
     end
 end
