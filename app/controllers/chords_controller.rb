@@ -49,8 +49,6 @@ class ChordsController < ApplicationController
         select_notes_ids = params.require(:select_notes_ids).delete('[]"').split(',').map{|n| n.to_i}
         select_notes_ids_minus_one = select_notes_ids.map{|n| n - 1 }
         select_notes_ids_minus_one.shift()
-        # [0, 2, 4, 5, 7, 9, 11]
-        pp select_notes_ids_minus_one
 
         notes.each do |note|
             chord = Chord.new

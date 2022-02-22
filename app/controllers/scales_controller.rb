@@ -49,8 +49,6 @@ class ScalesController < ApplicationController
         select_notes_ids_minus_one = select_notes_ids.map{|n| n - 1 }
         select_notes_ids_minus_one.shift()
 
-        pp select_notes_ids_minus_one
-
         notes.each do |note|
             scale = Scale.new
             scale.scale_type_id = scale_type_id
